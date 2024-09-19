@@ -1,0 +1,32 @@
+/* style.css */
+
+body { margin: 0; }
+canvas { display: block; }
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.left-section h1 {
+    margin: 0;
+}
+
+.right-section {
+    display: flex;
+    align-items: right;
+}
+
+.buttons button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.buttons button i {
+    color: #333; /* Colore delle icone */
+}
