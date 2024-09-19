@@ -1,29 +1,23 @@
-prototype .    .     .      . v0.1
-          aracnecreativestudio.com
-          aracne corporation
-          est. 2016
-how-to-run:
->download the repo
->cd /path/to/your/repo
->npm start
->enjoy at localhost:3000
+# Aracne Creative Studio
 
-© aracne corp. - worldwide
-           ____                      ,
-          /---.'.__             ____//
-               '--.\           /.---'
-          _______  \\         //
-        /.------.\  \|      .'/  ______
-       //  ___  \ \ ||/|\  //  _/_----.\__
-      |/  /.-.\  \ \:|< >|// _/.'..\   '--'
-         //   \'. | \'.|.'/ /_/ /  \\
-        //     \ \_\/" ' ~\-'.-'    \\
-       //       '-._| :H: |'-.__     \\
-      //           (/'==='\)'-._\     ||
-      ||                        \\    \|
-      ||                         \\    '
-      |/                          \\
-                                   ||
-                                   ||
-                                   \\
-                                    '
+**Prototype v0.1**
+
+**Website:** TBA >>>> [aracnecreativestudio.com](http://aracnecreativestudio.com)  
+**Company:** Aracne Corporation  
+**Established:** 2016
+
+## How to Run
+
+1. **Download the Repository:**
+   git clone https://github.com/gianmarcorosso/aracnecreativestudio.git
+2. **Navigate to the Project Directory**
+   cd /path/to/your/repo
+3. **Install Dependencies**
+   npm install
+4. **Launch the prototype**
+   npm start
+5. **Access the Application**
+   Open your browser and go to http://localhost:3000
+
+
+© Aracne Corporation
