@@ -19,5 +19,6 @@
 5. **Access the Application**
    Open your browser and go to http://localhost:3000
 
+> Any doubts on how to use / install npm ? well... we live in a timeline where google and chatgpt exist, so do your own research.
 
-© Aracne Corporation
+© Aracne Corporation - All Rights Reserved
