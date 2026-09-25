@@ -4,7 +4,7 @@ const path = require('path');
 
 app.use(express.static('public'));
 
-const pages = ['clothing', 'films', 'design', 'contact', 'about', 'product'];
+const pages = ['clothing', 'films', 'design', 'contact', 'about', 'product', 'cart', 'checkout', 'account', 'order'];
 pages.forEach(page => {
     app.get(`/${page}`, (req, res) => {
         res.sendFile(path.join(__dirname, 'public', `${page}.html`));

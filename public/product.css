@@ -45,7 +45,7 @@ main {
     justify-content: center;
     position: relative;
     padding-top: 60px;
-    padding-bottom: 160px;
+    padding-bottom: 250px;
 }
 
 .slider {
@@ -70,7 +70,8 @@ main {
 }
 
 .slide img {
-    max-height: 100%;
+    /* viewport minus header and fixed footer (main's padding) */
+    max-height: calc(100vh - 310px);
     max-width: 60%;
     object-fit: contain;
 }

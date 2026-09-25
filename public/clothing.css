@@ -120,4 +120,10 @@ main {
 @media (max-width: 640px) {
     .grid { grid-template-columns: repeat(2, 1fr); }
     header { padding: 14px 16px; }
+    .nav-left img { height: 40px; }
+    .nav-center {
+        font-size: 0.68rem;
+        letter-spacing: 0.18em;
+        white-space: nowrap;
+    }
 }

@@ -4,15 +4,8 @@
         ? saved === 'dark'
         : window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    if (isDark) {
-        document.documentElement.style.setProperty('--bg', '#000000');
-        document.documentElement.style.setProperty('--fg', '#ffffff');
-        document.body.style.background = '#000000';
-        document.body.style.color = '#ffffff';
-    } else {
-        document.documentElement.style.setProperty('--bg', '#ffffff');
-        document.documentElement.style.setProperty('--fg', '#000000');
-        document.body.style.background = '#ffffff';
-        document.body.style.color = '#000000';
-    }
+    // Only expose the theme as CSS variables. The shop pages (clothing, product)
+    // are styled light-only for now, so body colors are not forced here.
+    document.documentElement.style.setProperty('--bg', isDark ? '#000000' : '#ffffff');
+    document.documentElement.style.setProperty('--fg', isDark ? '#ffffff' : '#000000');
 })();

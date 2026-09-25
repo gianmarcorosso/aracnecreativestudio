@@ -1,0 +1,444 @@
+/* shop.css — header icons, cart, checkout, account, orders.
+   Loaded after clothing.css (shared header) on shop pages, and after product.css on the product page. */
+
+/* --- Header icons --- */
+.shop-nav {
+    gap: 18px;
+}
+
+.shop-nav-link {
+    position: relative;
+    display: flex;
+    color: #000;
+    text-decoration: none;
+    padding: 6px;
+    margin: -6px;
+    transition: opacity 0.2s;
+}
+
+.shop-nav-link:hover { opacity: 0.4; }
+
+.shop-nav-count {
+    position: absolute;
+    top: -2px;
+    right: -6px;
+    min-width: 15px;
+    height: 15px;
+    padding: 0 4px;
+    border-radius: 8px;
+    background: #000;
+    color: #fff;
+    font-size: 0.6rem;
+    font-weight: 500;
+    line-height: 15px;
+    text-align: center;
+}
+
+/* --- Page layout --- */
+.shop-main {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 120px 24px 80px;
+}
+
+.shop-title {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin: 0 0 40px;
+}
+
+.shop-subtitle {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin: 48px 0 16px;
+}
+
+.shop-muted {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #888;
+    margin: 0 0 24px;
+}
+
+.shop-empty {
+    text-align: center;
+    padding: 60px 0;
+}
+
+/* --- Buttons & links --- */
+.shop-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 16px 20px;
+    border: 1px solid #000;
+    background: #000;
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.shop-btn:hover { opacity: 0.75; }
+.shop-btn:disabled { opacity: 0.4; cursor: default; }
+
+.shop-btn-ghost {
+    background: none;
+    color: #000;
+}
+
+.shop-link {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+}
+
+.shop-link:hover { opacity: 0.5; }
+
+/* --- Item rows (cart, checkout, orders) --- */
+.shop-lines {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid #e0e0e0;
+}
+
+.shop-line {
+    display: grid;
+    grid-template-columns: 88px 1fr auto;
+    gap: 20px;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.shop-line-img {
+    width: 88px;
+    height: 88px;
+    object-fit: contain;
+    display: block;
+}
+
+.shop-line-name {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0 0 6px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.shop-line-meta {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #888;
+    margin: 0 0 12px;
+}
+
+.shop-line-price {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.shop-line-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.shop-qty {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+}
+
+.shop-qty button {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: none;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 300;
+    cursor: pointer;
+    color: #000;
+}
+
+.shop-qty span {
+    min-width: 24px;
+    text-align: center;
+    font-size: 0.75rem;
+}
+
+/* --- Summary box --- */
+.shop-summary {
+    margin-top: 32px;
+    margin-left: auto;
+    max-width: 360px;
+}
+
+.shop-summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 8px 0;
+}
+
+.shop-summary-total {
+    font-weight: 500;
+    border-top: 1px solid #000;
+    margin-top: 8px;
+    padding-top: 16px;
+    margin-bottom: 24px;
+}
+
+/* --- Forms --- */
+.shop-form {
+    display: grid;
+    gap: 18px;
+}
+
+.shop-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.shop-field label {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.shop-field input,
+.shop-field textarea {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-bottom: 1px solid #000;
+    border-radius: 0;
+    background: none;
+    font-family: inherit;
+    font-size: 16px; /* 16px stops iOS from zooming into the field */
+    font-weight: 300;
+    color: #000;
+    outline: none;
+}
+
+.shop-field input:focus,
+.shop-field textarea:focus {
+    border-bottom-width: 2px;
+    padding-bottom: 11px;
+}
+
+.shop-error {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #c00;
+    min-height: 1em;
+    margin: 0;
+}
+
+.shop-note {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    line-height: 1.7;
+    color: #888;
+    border: 1px solid #e0e0e0;
+    padding: 16px;
+    margin: 0;
+}
+
+/* --- Account tabs --- */
+.shop-auth {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.shop-tabs {
+    display: flex;
+    gap: 28px;
+    margin-bottom: 36px;
+}
+
+.shop-tab {
+    background: none;
+    border: none;
+    padding: 0 0 6px;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #aaa;
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+}
+
+.shop-tab.active {
+    color: #000;
+    border-bottom-color: #000;
+}
+
+/* --- Orders list --- */
+.shop-orders {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid #e0e0e0;
+}
+
+.shop-order-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 24px;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid #e0e0e0;
+    color: inherit;
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+}
+
+.shop-order-row:hover { opacity: 0.5; }
+
+.shop-order-id { font-weight: 500; }
+
+.shop-order-date {
+    display: block;
+    color: #888;
+    font-weight: 300;
+    margin-top: 4px;
+}
+
+.shop-badge {
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    border: 1px solid #000;
+    padding: 4px 8px;
+}
+
+.shop-address {
+    font-size: 0.8rem;
+    line-height: 1.7;
+    margin: 0;
+    font-style: normal;
+}
+
+.shop-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+}
+
+/* --- Product page: size picker + add feedback --- */
+.size-picker {
+    display: flex;
+    gap: 8px;
+    margin: 0 0 16px;
+}
+
+.size-btn {
+    min-width: 40px;
+    height: 34px;
+    padding: 0 10px;
+    border: 1px solid #ddd;
+    background: #fff;
+    font-family: inherit;
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: #000;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.size-btn:hover { border-color: #000; }
+
+.size-btn.active {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+.add-status {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    min-height: 1em;
+    margin: 12px 0 0;
+    color: #888;
+}
+
+.add-status a { color: #000; }
+
+/* --- Mobile --- */
+@media (max-width: 640px) {
+    .shop-main { padding: 96px 16px 60px; }
+    .shop-title { margin-bottom: 28px; }
+
+    .shop-line {
+        grid-template-columns: 72px 1fr;
+        gap: 14px;
+    }
+    .shop-line-img { width: 72px; height: 72px; }
+    .shop-line-price {
+        grid-column: 2;
+        text-align: left;
+    }
+
+    .shop-summary { max-width: none; }
+
+    .shop-form-row,
+    .shop-two-col {
+        grid-template-columns: 1fr;
+    }
+    .shop-two-col { gap: 32px; }
+
+    .shop-order-row {
+        grid-template-columns: 1fr auto;
+        gap: 10px 16px;
+    }
+    .shop-order-row .shop-badge {
+        grid-column: 1;
+        justify-self: start;
+    }
+    .shop-order-row .shop-order-total {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .shop-nav { gap: 14px; }
+}

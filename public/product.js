@@ -1,57 +1,12 @@
-const products = [
-    {
-        id: 'hooded-bomber',
-        name: 'Hooded Bomber',
-        price: '€ 320',
-        images: ['/bomber.png'],
-    },
-    {
-        id: 'hoodie-jacket',
-        name: 'Hoodie Jacket',
-        price: '€ 210',
-        images: ['/hoodiejacket.png'],
-    },
-    {
-        id: 'oversized-tee',
-        name: 'Oversized Tee',
-        price: '€ 80',
-        images: ['/tshirt.png'],
-    },
-    {
-        id: 'oversized-tee-black',
-        name: 'Oversized Tee Black',
-        price: '€ 80',
-        images: ['/thisrtblk.png'],
-    },
-    {
-        id: 'relaxed-pants',
-        name: 'Relaxed Pants',
-        price: '€ 140',
-        images: ['/pants.png'],
-    },
-    {
-        id: 'relaxed-pants-ii',
-        name: 'Relaxed Pants II',
-        price: '€ 140',
-        images: ['/pants2.png'],
-    },
-    {
-        id: 'leather-bag',
-        name: 'Leather Bag',
-        price: '€ 480',
-        images: ['/bag.png'],
-    },
-];
-
 // Read product id from URL param
 const params = new URLSearchParams(window.location.search);
 const productId = params.get('id');
-const product = products.find(p => p.id === productId) || products[0];
+const product = Shop.getProduct(productId) || Shop.products[0];
 
 // Populate
 document.title = `${product.name} — ARACNE CREATIVE STUDIO`;
 document.getElementById('productName').textContent = product.name;
-document.getElementById('productPrice').textContent = product.price;
+document.getElementById('productPrice').textContent = Shop.formatPrice(product.price);
 
 // Build slides
 const slider = document.getElementById('slider');
@@ -96,4 +51,34 @@ if (slides.length <= 1) {
 window.addEventListener('keydown', e => {
     if (e.key === 'ArrowLeft') goTo(current - 1);
     if (e.key === 'ArrowRight') goTo(current + 1);
+});
+
+// Size picker + add to bag
+const sizePicker = document.getElementById('sizePicker');
+const addStatus = document.getElementById('addStatus');
+let selectedSize = null;
+
+if (product.sizes.length) {
+    product.sizes.forEach(size => {
+        const btn = document.createElement('button');
+        btn.className = 'size-btn';
+        btn.textContent = size;
+        btn.addEventListener('click', () => {
+            selectedSize = size;
+            sizePicker.querySelectorAll('.size-btn').forEach(b => b.classList.toggle('active', b === btn));
+            addStatus.textContent = '';
+        });
+        sizePicker.appendChild(btn);
+    });
+} else {
+    sizePicker.style.display = 'none';
+}
+
+document.getElementById('addBtn').addEventListener('click', () => {
+    if (product.sizes.length && !selectedSize) {
+        addStatus.textContent = 'Select a size';
+        return;
+    }
+    Shop.addToCart(product.id, selectedSize);
+    addStatus.innerHTML = 'Added to bag · <a href="/cart">View bag</a>';
 });

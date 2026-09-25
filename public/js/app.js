@@ -3,7 +3,7 @@ import { OrbitControls } from 'OrbitControls';
 
 // --- Renderer ---
 const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
@@ -11,6 +11,12 @@ document.body.appendChild(renderer.domElement);
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.set(0, 0, 10);
+
+// Narrow/portrait screens: labels sit closer to the sphere so they fit the width
+const isCompact = window.innerWidth < 700 || window.innerWidth < window.innerHeight;
+const LABEL_RADIUS = isCompact ? [2.4, 3.0] : null; // null = keep the line's own random length
+// Radius (world units) that must stay on screen: labelled dots + label text
+const FIT_RADIUS = isCompact ? 4.1 : 7;
 
 // --- Lights ---
 const dirLight = new THREE.DirectionalLight(0xffffff, 1);
@@ -20,8 +26,7 @@ scene.add(new THREE.AmbientLight(0xffffff, 1));
 
 // --- Controls: attach only to canvas to avoid intercepting HTML clicks ---
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.minDistance = 7.5;
-controls.maxDistance = 12.5;
+controls.enablePan = false;
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 
@@ -215,6 +220,12 @@ function createClickableLabels() {
         if (matIdx !== -1) plainLineMats.splice(matIdx, 1);
 
         const pts = lineData.line.geometry.attributes.position.array;
+        if (LABEL_RADIUS) {
+            const [min, max] = LABEL_RADIUS;
+            const end = lineData.direction.clone().multiplyScalar(min + Math.random() * (max - min));
+            pts[3] = end.x; pts[4] = end.y; pts[5] = end.z;
+            lineData.line.geometry.attributes.position.needsUpdate = true;
+        }
         const labelPos = new THREE.Vector3(pts[3], pts[4], pts[5]).multiplyScalar(1.05);
 
         // Dot
@@ -249,6 +260,18 @@ function createClickableLabels() {
 
 createClickableLabels();
 applyTheme();
+
+// --- Fit camera so FIT_RADIUS is visible in both directions ---
+function fitCamera() {
+    const halfV = THREE.MathUtils.degToRad(camera.fov / 2);
+    const halfH = Math.atan(Math.tan(halfV) * camera.aspect);
+    const distance = Math.max(10, FIT_RADIUS / Math.tan(Math.min(halfV, halfH)));
+    camera.position.setLength(distance);
+    controls.minDistance = distance * 0.75;
+    controls.maxDistance = distance * 1.25;
+}
+
+fitCamera();
 
 // --- Animation ---
 function animateLines() {
@@ -327,7 +350,8 @@ renderer.domElement.addEventListener('touchend', (e) => {
 // --- Resize ---
 window.addEventListener('resize', () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
+    fitCamera();
 });
